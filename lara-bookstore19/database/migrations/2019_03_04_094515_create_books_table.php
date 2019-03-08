@@ -21,6 +21,7 @@ class CreateBooksTable extends Migration
             $table->date('published')->nullable();
             $table->integer('rating')->default(1);
             $table->string('description')->nullable();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }
