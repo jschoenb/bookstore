@@ -11,6 +11,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //test user
+        $user = new \App\User;
+        $user->name = "testuser";
+        $user->email = 'test@gmail.com';
+        $user->password = bcrypt('secret');//brypt is default encryption
+        $user->save();
     }
 }

@@ -26,16 +26,45 @@ class BooksTableSeeder extends Seeder
         $book->rating = 10;
         $book->description = "Hat ein paar Oscars gewonnen, hier darf man als Mann weinen";
         $book->published = new DateTime();
-        $book->save();//speichern in der DB
+
+        //get the first user of DB
+        $user = \App\User::all()->first();
+        $book->user()->associate($user);//adding user
+        $book->save();//save in DB
+
+        $authors = \App\Author::all()->pluck('id');
+        $book->authors()->sync($authors);
+
+        //add images to book
+        $image1 = new \App\Image;
+        $image1->title = "Cover 1";
+        $image1->url = "https://images-na.ssl-images-amazon.com/images/I/61ZrGM%2BJF5L._SL1100_.jpg";
+        $image1->book()->associate($book);
+        $image1->save();
+
+        $image2 = new \App\Image;
+        $image2->title = "Cover 2";
+        $image2->url = "https://images-na.ssl-images-amazon.com/images/I/61ZrGM%2BJF5L._SL1100_.jpg";
+        $image2->book()->associate($book);
+        $image2->save();
 
 
-        //update
+        /*//update
         $book = App\Book::find(1);
         $book->title = "Neuer Title";
-        $book->save();
+        $book->save();*/
         //delete: $book->delete();
 
         //findOrCreate updateOrCreate
         //$book = App\Book::findOrCreate(['title' => 'Buchtitel']);
+
+
+        //Element in Beziehung einfügen
+        /*$book->user()->associate($user1);
+        $book->save();*/
+
+        //$book->authors()->sync([1,2,3]);//for updating stuff in M:N Relationship
     }
+
+
 }
