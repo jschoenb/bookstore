@@ -48,12 +48,14 @@ Route::get('/', function () {
     return view ('welcome', compact('name', 'books'));
 });
 
-Route::get('/books/{id}', function ($id) {
-    $book = DB::table('books')->find($id);
-    return view ('books.show', compact('book'));
+Route::get('/books', function(){
+    //$books = DB::table('books')->get();
+    $books = Book::all();
+    return view ('books.index', compact('books'));
 });
 
-Route::get('/books', function(){
-    $books = DB::table('books')->get();
-    return view ('books.index', compact('books'));
+Route::get('/books/{id}', function ($id) {
+    //$book = DB::table('books')->find($id);
+    $book = Book::find($id);
+    return view ('books.show', compact('book'));
 });
