@@ -32,6 +32,7 @@ class BooksTableSeeder extends Seeder
         $book->user()->associate($user);//adding user
         $book->save();//save in DB
 
+        //only inserts the missing ones
         $authors = \App\Author::all()->pluck('id');
         $book->authors()->sync($authors);
 
