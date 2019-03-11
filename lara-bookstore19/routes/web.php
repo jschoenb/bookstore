@@ -34,28 +34,9 @@ about the type of the database.*/
  * Hibernate: is faster than active record, but more complex and only for JAVA
  * */
 
-Route::get('/', function () {
-    $name = "Dani";
-    $books = DB::table('books')->get();
+Route::get('/', 'BookController@index');
+Route::get('/books', 'BookController@index');
 
-    //DB::table('books')->where('title', 'Herr der')->get();
-
-    //return $books; wichtig, damit man sieht, ob die DB abfrage passt
-
-    /*return view('welcome', [
-        'name' => $name
-    ]);*/
-    return view ('welcome', compact('name', 'books'));
-});
-
-Route::get('/books', function(){
-    //$books = DB::table('books')->get();
-    $books = Book::all();
-    return view ('books.index', compact('books'));
-});
-
-Route::get('/books/{id}', function ($id) {
-    //$book = DB::table('books')->find($id);
-    $book = Book::find($id);
-    return view ('books.show', compact('book'));
-});
+//id does not have to be added as parameter in show because it uses the param from
+// the {id} route
+Route::get('/books/{id}', 'BookController@show');
