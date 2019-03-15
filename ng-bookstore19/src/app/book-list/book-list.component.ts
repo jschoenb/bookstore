@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {Author} from "../shared/author";
 import {Book} from "../shared/book";
 import {Image} from "../shared/image";
@@ -10,6 +10,7 @@ import {Image} from "../shared/image";
 })
 export class BookListComponent implements OnInit {
 
+  @Output() showDetailsEvent = new EventEmitter<Book>();
   public books: Book[];
 
   constructor() { }
@@ -42,8 +43,9 @@ export class BookListComponent implements OnInit {
     ];
   }
 
-  print(){
-    console.log("Test");
-  }
 
+  showDetails(book: Book){
+    //fire event
+    this.showDetailsEvent.emit(book);
+  }
 }

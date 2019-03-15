@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Book} from "../shared/book";
 
 @Component({
-  selector: 'bs-book-list-item',
+  selector: 'a.bs-book-list-item',//we just added the .a, like css selector
   templateUrl: './book-list-item.component.html',
   styles: []
 })
 export class BookListItemComponent implements OnInit {
 
+  @Input() book: Book;
   constructor() { }
 
   ngOnInit() {
   }
 
+  print(){
+    console.log(this.book);
+  }
 }

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Book} from "./shared/book";
+import {Author} from "./shared/author";
 
 @Component({
   selector: 'bs-root',
@@ -6,5 +8,20 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'the jungle';
+  listOn = true;
+  detailsOn = false;
+
+
+  book: Book;
+
+  showList(){
+    this.listOn = true;
+    this.detailsOn = false;
+  }
+
+  showDetails(book: Book){
+    this.book = book;
+    this.listOn = false;
+    this.detailsOn = true;
+  }
 }
