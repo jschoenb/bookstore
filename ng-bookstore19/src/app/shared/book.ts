@@ -1,5 +1,7 @@
 import {Image} from "./image";
 import {Author} from "./author";
+export {Image} from "./image";
+export {Author} from "./author";
 
 export class Book {
     constructor(public id: number,
@@ -12,6 +14,6 @@ export class Book {
                 public rating?: number,
                 public images?: Image[],
                 public description?: string){
-        
+
     }
 }
