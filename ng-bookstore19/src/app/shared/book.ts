@@ -1,8 +1,9 @@
-import {Image} from "./image";
 import {Author} from "./author";
-export {Image} from "./image";
+import {Image} from "./image";
 export {Author} from "./author";
+export {Image} from "./image";
 
+//? bedeutet optional
 export class Book {
     constructor(public id: number,
                 public isbn: string,
@@ -13,7 +14,5 @@ export class Book {
                 public subtitle?: string,
                 public rating?: number,
                 public images?: Image[],
-                public description?: string){
-
-    }
+                public desciption?: string){}
 }
