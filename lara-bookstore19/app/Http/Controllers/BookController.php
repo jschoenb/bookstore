@@ -22,9 +22,10 @@ class BookController extends Controller
         return $books;
     }
 
-    public function findByISBN(string $isbn){
-        $book = Book::where('isbn', $isbn)->
-            with(['authors', 'images', 'user'])->get();
+    public function findByISBN(string $isbn) :Book{
+        $book = Book::where('isbn', $isbn)
+            ->with(['authors', 'images', 'user'])
+            ->first();
         return $book;
     }
 
