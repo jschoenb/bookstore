@@ -11,6 +11,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import { BookFormComponent } from './book-form/book-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     BookListItemComponent,
     BookDetailsComponent,
     HomeComponent,
-    BookFormComponent
+    BookFormComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
