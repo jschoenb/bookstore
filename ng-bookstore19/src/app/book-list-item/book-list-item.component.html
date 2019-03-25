@@ -1,5 +1,5 @@
 <a class="item" (click)="print();">{{book.title}}
-  <img class="ui tiny image" *ngIf="book.images" [src]="book.images[0]?.url">
+  <img class="ui tiny image" *ngIf="book.images[0]" [src]="book.images[0]?.url">
   <div class="content">
     <div class="header">{{book.title}}</div>
     <div class="description">{{book.subtitle}}</div>
